@@ -8,7 +8,7 @@
                         style="font-size: 28px;">task_alt</span>
                 </div>
                 <h1 class="font-display-lg text-display-lg text-on-background">TaskFlow</h1>
-                <p class="font-body-md text-body-md text-on-surface-variant">Create your account</p>
+                <p class="font-body-md text-body-md text-on-surface-variant">Crea il tuo account</p>
             </div>
             @if (error()) {
                 <div class="bg-error-container/10 border border-error/30 rounded-lg px-md py-sm">
@@ -17,10 +17,10 @@
             }
             <form class="flex flex-col gap-sm" [formGroup]="form" (ngSubmit)="submit()">
                 <div class="flex flex-col gap-xs">
-                    <label class="font-label-sm text-label-sm text-on-surface-variant" for="name">Name</label>
+                    <label class="font-label-sm text-label-sm text-on-surface-variant" for="name">Nome</label>
                     <input
                         class="input-field"
-                        id="name" formControlName="name" placeholder="Enter your name" type="text"
+                        id="name" formControlName="name" placeholder="Inserisci il tuo nome" type="text"
                         [attr.aria-invalid]="form.get('name')?.invalid && form.get('name')?.touched" />
                     <span class="form-error-msg" [class.visible]="form.get('name')?.invalid && form.get('name')?.touched">Il nome è obbligatorio</span>
                 </div>
@@ -28,7 +28,7 @@
                     <label class="font-label-sm text-label-sm text-on-surface-variant" for="email">Email</label>
                     <input
                         class="input-field"
-                        id="email" formControlName="email" placeholder="Enter your email address" type="email"
+                        id="email" formControlName="email" placeholder="Inserisci il tuo indirizzo email" type="email"
                         [attr.aria-invalid]="form.get('email')?.invalid && form.get('email')?.touched" />
                     <span class="form-error-msg" [class.visible]="form.get('email')?.invalid && form.get('email')?.touched">Inserisci un'email valida</span>
                 </div>
@@ -48,26 +48,22 @@
                         [attr.aria-invalid]="form.get('password_confirmation')?.invalid && form.get('password_confirmation')?.touched" />
                     <span class="form-error-msg" [class.visible]="form.get('password_confirmation')?.invalid && form.get('password_confirmation')?.touched">La conferma della password è obbligatoria</span>
                 </div>
-                <button
-                    class="btn-primary"
+                <ui-button
                     [disabled]="loading()"
-                    type="submit">
-                    @if (loading()) {
-                        <span class="material-symbols-outlined animate-spin" style="font-size: 20px;">progress_activity</span>
-                    } @else {
-                        Register
-                    }
-                </button>
+                    [loading]="loading()"
+                    text="Registrati"
+                    variant="primary"
+                    type="submit" />
             </form>
             <div class="flex flex-col gap-md items-center mt-sm">
                 <div class="w-full h-px bg-surface-variant relative flex items-center justify-center">
                     <span
-                        class="absolute bg-surface-container-lowest px-sm font-label-sm text-label-sm text-outline">or</span>
+                        class="absolute bg-surface-container-lowest px-sm font-label-sm text-label-sm text-outline">oppure</span>
                 </div>
                 <p class="font-body-sm text-body-sm text-on-surface-variant">
-                    Already have an account? <a
+                    Hai già un account? <a
                         class="link-primary font-semibold"
-                        routerLink="/login">Login</a>
+                        routerLink="/login">Accedi</a>
                 </p>
             </div>
         </div>
