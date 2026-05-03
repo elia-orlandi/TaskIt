@@ -41,12 +41,12 @@
                     <span class="form-error-msg" [class.visible]="form.get('password')?.invalid && form.get('password')?.touched">La password deve essere almeno 8 caratteri</span>
                 </div>
                 <div class="flex flex-col gap-xs">
-                    <label class="font-label-sm text-label-sm text-on-surface-variant" for="password_confirmation">Confirm Password</label>
+                    <label class="font-label-sm text-label-sm text-on-surface-variant" for="password_confirmation">Conferma Password</label>
                     <input
                         class="input-field"
                         id="password_confirmation" formControlName="password_confirmation" placeholder="••••••••" type="password"
-                        [attr.aria-invalid]="form.get('password_confirmation')?.invalid && form.get('password_confirmation')?.touched" />
-                    <span class="form-error-msg" [class.visible]="form.get('password_confirmation')?.invalid && form.get('password_confirmation')?.touched">La conferma della password è obbligatoria</span>
+                        [attr.aria-invalid]="form.get('password_confirmation')?.touched && (form.get('password_confirmation')?.invalid || form.hasError('passwordMismatch'))" />
+                    <span class="form-error-msg" [class.visible]="confirmPasswordError()">{{ confirmPasswordError() }}</span>
                 </div>
                 <ui-button
                     [disabled]="loading()"

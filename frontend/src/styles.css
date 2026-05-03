@@ -125,11 +125,11 @@
   }
 
   .form-error-msg {
-    @apply text-error text-label-sm invisible;
+    @apply text-error text-label-sm block min-h-5 opacity-0 invisible transition-opacity duration-200 ease-in-out;
   }
 
   .form-error-msg.visible {
-    @apply visible;
+    @apply opacity-100 visible;
   }
 
   .btn-primary {
