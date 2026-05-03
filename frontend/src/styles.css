@@ -1,1 +1,138 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+@import 'tailwindcss';
+
+@import "tailwindcss";
+
+/* Attiva il Dark Mode tramite classe */
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* COLORS */
+  --color-on-primary-fixed-variant: #003ea8;
+  --color-surface-tint: #0053db;
+  --color-inverse-primary: #b4c5ff;
+  --color-on-tertiary-fixed-variant: #7d2d00;
+  --color-primary-fixed-dim: #b4c5ff;
+  --color-primary: #004ac6;
+  --color-on-secondary: #ffffff;
+  --color-tertiary-container: #bc4800;
+  --color-surface-bright: #faf8ff;
+  --color-on-background: #191b23;
+  --color-on-primary-fixed: #00174b;
+  --color-surface-container-high: #e7e7f3;
+  --color-tertiary-fixed: #ffdbcd;
+  --color-tertiary-fixed-dim: #ffb596;
+  --color-surface-container-highest: #e1e2ed;
+  --color-on-secondary-fixed-variant: #3a485b;
+  --color-on-tertiary-container: #ffede6;
+  --color-primary-fixed: #dbe1ff;
+  --color-secondary-fixed: #d5e3fc;
+  --color-secondary-fixed-dim: #b9c7df;
+  --color-surface-container-low: #f3f3fe;
+  --color-error-container: #ffdad6;
+  --color-surface-variant: #e1e2ed;
+  --color-on-secondary-container: #57657a;
+  --color-secondary: #515f74;
+  --color-surface-dim: #d9d9e5;
+  --color-on-tertiary: #ffffff;
+  --color-secondary-container: #d5e3fc;
+  --color-outline-variant: #c3c6d7;
+  --color-surface-container: #ededf9;
+  --color-surface-container-lowest: #ffffff;
+  --color-tertiary: #943700;
+  --color-on-primary: #ffffff;
+  --color-on-surface: #191b23;
+  --color-error: #ba1a1a;
+  --color-surface: #faf8ff;
+  --color-on-error-container: #93000a;
+  --color-on-error: #ffffff;
+  --color-inverse-on-surface: #f0f0fb;
+  --color-background: #faf8ff;
+  --color-on-secondary-fixed: #0d1c2e;
+  --color-on-primary-container: #eeefff;
+  --color-inverse-surface: #2e3039;
+  --color-outline: #737686;
+  --color-on-tertiary-fixed: #360f00;
+  --color-on-surface-variant: #434655;
+  --color-primary-container: #2563eb;
+
+  /* TYPOGRAPHY */
+  --text-headline-md: 24px;
+  --text-headline-md--line-height: 32px;
+  --text-headline-md--letter-spacing: -0.01em;
+  --text-headline-md--font-weight: 600;
+
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 16px;
+  --text-label-sm--font-weight: 500;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 24px;
+  --text-body-md--font-weight: 400;
+
+  --text-display-lg: 36px;
+  --text-display-lg--line-height: 44px;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight: 700;
+
+  --text-title-sm: 18px;
+  --text-title-sm--line-height: 24px;
+  --text-title-sm--font-weight: 600;
+
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 20px;
+  --text-body-sm--font-weight: 400;
+
+  --text-label-caps: 12px;
+  --text-label-caps--line-height: 16px;
+  --text-label-caps--letter-spacing: 0.05em;
+  --text-label-caps--font-weight: 600;
+
+  /* SPACING */
+  --spacing-gutter: 20px;
+  --spacing-container-max: 1440px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-unit: 4px;
+
+  /* BORDER RADIUS */
+  --radius-DEFAULT: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
+}
+
+@layer components {
+  .link-primary {
+    @apply text-primary-container transition-colors duration-200 hover:text-primary;
+  }
+
+  .input-field {
+    @apply w-full bg-surface-container-lowest border border-outline-variant rounded-sm px-4 py-[10px] text-on-background text-sm transition-colors duration-150 focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 placeholder:text-outline;
+
+    &[aria-invalid='true'] {
+      @apply border-error;
+
+      &:focus {
+        @apply border-error focus:ring-error/20;
+      }
+    }
+  }
+
+  .form-error-msg {
+    @apply text-error text-label-sm invisible;
+  }
+
+  .form-error-msg.visible {
+    @apply visible;
+  }
+
+  .btn-primary {
+    @apply w-full h-11 mt-4 flex items-center justify-center rounded-lg bg-primary-container text-white text-label-caps transition-colors hover:bg-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+}
