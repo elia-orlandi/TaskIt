@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TaskFlow - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-tint": "#0053db",
+                        "inverse-primary": "#b4c5ff",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "primary": "#004ac6",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#bc4800",
+                        "surface-bright": "#faf8ff",
+                        "on-background": "#191b23",
+                        "on-primary-fixed": "#00174b",
+                        "surface-container-high": "#e7e7f3",
+                        "tertiary-fixed": "#ffdbcd",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "surface-container-highest": "#e1e2ed",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "on-tertiary-container": "#ffede6",
+                        "primary-fixed": "#dbe1ff",
+                        "secondary-fixed": "#d5e3fc",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "surface-container-low": "#f3f3fe",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e1e2ed",
+                        "on-secondary-container": "#57657a",
+                        "secondary": "#515f74",
+                        "surface-dim": "#d9d9e5",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#d5e3fc",
+                        "outline-variant": "#c3c6d7",
+                        "surface-container": "#ededf9",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#943700",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#191b23",
+                        "error": "#ba1a1a",
+                        "surface": "#faf8ff",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f0f0fb",
+                        "background": "#faf8ff",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "on-primary-container": "#eeefff",
+                        "inverse-surface": "#2e3039",
+                        "outline": "#737686",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-surface-variant": "#434655",
+                        "primary-container": "#2563eb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "gutter": "20px",
+                        "container-max": "1440px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "unit": "4px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background antialiased min-h-screen flex items-center justify-center p-md">
+<main class="w-full max-w-[420px]">
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-xl flex flex-col gap-xl shadow-sm">
+<div class="flex flex-col items-center text-center gap-sm">
+<div class="h-12 w-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-primary-container" style="font-size: 28px;">task_alt</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-background">TaskFlow</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Sign in to your secure workspace</p>
+</div>
+<form class="flex flex-col gap-lg">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="email">Email</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-md py-[10px] text-on-background font-body-sm text-body-sm placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all" id="email" name="email" placeholder="Enter your email address" required="" type="email"/>
+</div>
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="password">Password</label>
+<a class="font-label-sm text-label-sm text-primary-container hover:text-primary transition-colors" href="#">Forgot password?</a>
+</div>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-md py-[10px] text-on-background font-body-sm text-body-sm placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+<button class="w-full bg-primary-container text-white text-label-caps rounded-lg h-[44px] flex items-center justify-center hover:bg-primary transition-colors mt-sm" type="submit">
+                    Login
+                </button>
+</form>
+<div class="flex flex-col gap-md items-center mt-sm">
+<div class="w-full h-px bg-surface-variant relative flex items-center justify-center">
+<span class="absolute bg-surface-container-lowest px-sm font-label-sm text-label-sm text-outline">or</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Don't have an account? <a class="text-primary-container font-semibold hover:text-primary transition-colors" href="#">Register</a>
+</p>
+</div>
+</div>
+</main>
+</body></html>
