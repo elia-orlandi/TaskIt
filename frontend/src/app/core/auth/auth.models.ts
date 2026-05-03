@@ -24,3 +24,18 @@ export type AuthResponse = {
   user: User;
   token: string;
 }
+
+export type ForgotPasswordRequest = {
+  email: string;
+}
+
+export type ResetPasswordRequest = {
+  email: string;
+  token: string;
+  password: string;
+  password_confirmation: string;
+}
+
+export type MessageResponse = {
+  message: string;
+}

@@ -59,7 +59,8 @@ return [
         ],
 
         'single' => [
-            'driver' => 'single',
+            'formatter' => Monolog\Formatter\LineFormatter::class,
+                    'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
             'replace_placeholders' => true,

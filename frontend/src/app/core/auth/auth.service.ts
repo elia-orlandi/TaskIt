@@ -5,7 +5,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { User, LoginRequest, RegisterRequest, AuthResponse } from './auth.models';
+import { User, LoginRequest, RegisterRequest, AuthResponse, ForgotPasswordRequest, ResetPasswordRequest, MessageResponse } from './auth.models';
 
 const API_URL = 'http://localhost:8000/api';
 const TOKEN_KEY = 'auth_token';
@@ -26,9 +26,9 @@ export class AuthService {
     return this.http.post<AuthResponse>(`${API_URL}/login`, credentials).pipe(
       tap(response => this.storeSession(response)),
       tap(() => this._loading.set(false)),
-      catchError(() => {
+      catchError((error) => {
         this._loading.set(false);
-        throw 1;
+        throw error;
       })
     );
   }
@@ -38,9 +38,9 @@ export class AuthService {
     return this.http.post<AuthResponse>(`${API_URL}/register`, data).pipe(
       tap(response => this.storeSession(response)),
       tap(() => this._loading.set(false)),
-      catchError(() => {
+      catchError((error) => {
         this._loading.set(false);
-        throw 1;
+        throw error;
       })
     );
   }
@@ -50,6 +50,28 @@ export class AuthService {
       complete: () => this.clearSession(),
       error: () => this.clearSession()
     });
+  }
+
+  forgotPassword(data: ForgotPasswordRequest): Observable<MessageResponse> {
+    this._loading.set(true);
+    return this.http.post<MessageResponse>(`${API_URL}/forgot-password`, data).pipe(
+      tap(() => this._loading.set(false)),
+      catchError((error) => {
+        this._loading.set(false);
+        throw error;
+      })
+    );
+  }
+
+  resetPassword(data: ResetPasswordRequest): Observable<MessageResponse> {
+    this._loading.set(true);
+    return this.http.post<MessageResponse>(`${API_URL}/reset-password`, data).pipe(
+      tap(() => this._loading.set(false)),
+      catchError((error) => {
+        this._loading.set(false);
+        throw error;
+      })
+    );
   }
 
   restoreSession(): void {
