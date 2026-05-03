@@ -1,0 +1,9 @@
+<input
+    #input
+    class="input-field"
+    type="text"
+    [placeholder]="placeholder()"
+    [attr.aria-invalid]="showError()"
+    (input)="onInput($event)"
+    (blur)="onBlur()" />
+<span class="form-error-msg" [class.visible]="showError()">{{ errorMessage() }}</span>

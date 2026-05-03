@@ -18,11 +18,10 @@
             <form class="flex flex-col gap-sm" [formGroup]="form" (ngSubmit)="submit()">
                 <div class="flex flex-col gap-xs">
                     <label class="font-label-sm text-label-sm text-on-surface-variant" for="email">Email</label>
-                    <input
-                        class="input-field"
-                        id="email" formControlName="email" placeholder="Inserisci il tuo indirizzo email" type="email"
-                        [attr.aria-invalid]="form.get('email')?.invalid && form.get('email')?.touched" />
-                    <span class="form-error-msg" [class.visible]="form.get('email')?.invalid && form.get('email')?.touched">Inserisci un'email valida</span>
+                    <ui-text-input
+                        formControlName="email"
+                        placeholder="Inserisci il tuo indirizzo email"
+                        [errorMessage]="emailError()" />
                 </div>
                 <div class="flex flex-col gap-xs">
                     <div class="flex justify-between items-center">
@@ -31,11 +30,10 @@
                         <a class="link-primary font-label-sm text-label-sm"
                             routerLink="/forgot-password">Password dimenticata?</a>
                     </div>
-                    <input
-                        class="input-field"
-                        id="password" formControlName="password" placeholder="••••••••" type="password"
-                        [attr.aria-invalid]="form.get('password')?.invalid && form.get('password')?.touched" />
-                    <span class="form-error-msg" [class.visible]="form.get('password')?.invalid && form.get('password')?.touched">La password è obbligatoria</span>
+                    <ui-password-input
+                        formControlName="password"
+                        placeholder="••••••••"
+                        [errorMessage]="passwordError()" />
                 </div>
                 <ui-button
                     [disabled]="loading()"
