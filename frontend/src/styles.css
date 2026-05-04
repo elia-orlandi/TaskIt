@@ -3,8 +3,6 @@
 
 @import 'tailwindcss';
 
-@import "tailwindcss";
-
 /* Attiva il Dark Mode tramite classe */
 @variant dark (&:where(.dark, .dark *));
 

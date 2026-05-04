@@ -21,20 +21,8 @@ Gestore task full-stack con Laravel 12 API + Angular 21. Autenticazione, CRUD co
 |-------|------|
 | Backend | Laravel 12 + Sanctum |
 | Frontend | Angular 21 (signals) |
-| DB | MySQL/SQLite |
+| DB | SQLite (default) |
 | UI | Material Design 3, CSS custom properties |
-
-## API Endpoints
-
-```
-POST   /api/register, /api/login, /api/logout
-GET    /api/user
-GET    /api/tasks, /api/categories
-POST   /api/tasks, /api/categories
-PUT    /api/tasks/{id}, /api/categories/{id}
-DELETE /api/tasks/{id}, /api/categories/{id}
-PATCH  /api/tasks/{id}/toggle-complete
-```
 
 ## Struttura progetto
 
@@ -43,20 +31,60 @@ backend/          → Laravel 12 API
 frontend/         → Angular 21 app
 ```
 
-## Setup rapido
+## Requisiti
+
+- PHP 8.2+ (estensioni: pdo_sqlite, mbstring, xml, tokenizer, openssl)
+- Node.js 18+
+- Composer 2
+
+## Setup Backend
 
 ```bash
-# Backend
 cd backend
+composer install
 cp .env.example .env
+php artisan key:generate
 php artisan migrate
+php artisan db:seed
 php artisan serve
+```
 
-# Frontend
+## Setup Frontend
+
+```bash
 cd frontend
 npm install
 ng serve
 ```
+
+## Accedere
+
+Dopo aver avviato backend e frontend, apri http://localhost:4200:
+
+- Email: `test@example.com`
+- Password: `password`
+
+Oppure registrati con un nuovo account dalla pagina di login.
+
+## API
+
+- Backend: `http://localhost:8000/api`
+- Frontend: `http://localhost:4200`
+- CORS configurato per `http://localhost:4200`
+
+### Endpoint principali
+
+| Metodo | Rotta | Descrizione |
+|--------|-------|-------------|
+| POST | `/api/register` | Registrazione |
+| POST | `/api/login` | Login |
+| POST | `/api/logout` | Logout |
+| GET | `/api/user` | Utente autenticato |
+| GET/POST | `/api/tasks` | Lista/crea task |
+| GET/PUT/DELETE | `/api/tasks/{id}` | Mostra/aggiorna/elimina task |
+| PATCH | `/api/tasks/{id}/toggle-complete` | Toggle completamento |
+| GET/POST | `/api/categories` | Lista/crea categorie |
+| GET/PUT/DELETE | `/api/categories/{id}` | Mostra/aggiorna/elimina categoria |
 
 ## Database
 
