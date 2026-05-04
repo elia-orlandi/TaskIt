@@ -35,10 +35,12 @@ export const routes: Routes = [
     children: [
       {
         path: 'tasks',
+        title: 'Attività',
         loadComponent: () => import('./pages/tasks/tasks.component').then(m => m.TasksComponent)
       },
       {
         path: 'categories',
+        title: 'Categorie',
         loadComponent: () => import('./pages/categories/categories.component').then(m => m.CategoriesComponent)
       },
       { path: '', redirectTo: 'tasks', pathMatch: 'full' }
