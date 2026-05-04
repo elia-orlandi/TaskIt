@@ -63,3 +63,8 @@ ng serve
 - `users` → `categories` → `tasks` (1:N)
 - `tasks.parent_task_id` → self-reference per sotto-attività
 - `tasks` usa `SoftDeletes`
+
+## Limitazioni attuali
+
+- **Reset password**: il link di reset appare nei log Laravel, non viene inviato via email
+- **Drag-drop e sotto-attività**: struttura backend presente, frontend da implementare

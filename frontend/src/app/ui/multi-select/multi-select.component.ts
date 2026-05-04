@@ -1,4 +1,4 @@
-import { Component, input, output, signal, computed } from '@angular/core';
+import { Component, input, output, signal, HostListener, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type SelectOption = {
@@ -12,11 +12,11 @@ export type SelectOption = {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="relative">
+    <div class="relative" (click)="onContainerClick($event)">
       <button
         type="button"
         (click)="toggle()"
-        class="w-full flex items-center justify-between px-md py-sm rounded-lg border border-surface-variant bg-surface-container-low hover:bg-surface-container-lowest transition-colors">
+        class="w-full flex items-center justify-between px-md py-sm rounded-lg border border-surface-variant hover:bg-surface-container-lowest transition-colors">
         <span class="font-body-md text-body-md text-on-surface truncate">
           @if (selected().length === 0) {
             {{ placeholder() }}
@@ -30,7 +30,7 @@ export type SelectOption = {
       </button>
 
       @if (isOpen()) {
-        <div class="absolute z-50 top-full left-0 right-0 mt-xs bg-surface-container-low rounded-lg border border-surface-variant shadow-lg max-h-60 overflow-y-auto">
+        <div class="bg-white absolute z-50 top-full left-0 right-0 mt-xs rounded-lg border border-surface-variant shadow-lg max-h-60 overflow-y-auto">
           @for (option of options(); track option.value) {
             <label class="flex items-center gap-sm px-md py-sm hover:bg-surface-container cursor-pointer">
               <input
@@ -59,6 +59,19 @@ export class MultiSelectComponent {
   selectionChange = output<string[]>();
 
   isOpen = signal(false);
+
+  constructor(private elementRef: ElementRef) {}
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.isOpen.set(false);
+    }
+  }
+
+  onContainerClick(event: MouseEvent): void {
+    event.stopPropagation();
+  }
 
   toggle(): void {
     this.isOpen.update(v => !v);
