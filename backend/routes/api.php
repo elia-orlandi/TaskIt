@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Api\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\TaskController;
 
 Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
@@ -19,4 +20,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
 
     Route::apiResource('categories', CategoryController::class);
+    Route::apiResource('tasks', TaskController::class);
+    Route::patch('tasks/{task}/toggle-complete', [TaskController::class, 'toggleComplete']);
 });

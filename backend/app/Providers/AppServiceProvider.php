@@ -28,5 +28,6 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Gate::policy(Category::class, CategoryPolicy::class);
+        Gate::policy(Task::class, TaskPolicy::class);
     }
 }
