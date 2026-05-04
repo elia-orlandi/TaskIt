@@ -1,34 +1,34 @@
-<div class="layout">
+<div class="flex h-screen overflow-hidden">
   <!-- Mobile overlay when drawer open -->
   @if (!drawerOpen()) {
-    <div class="drawer-overlay md:hidden" (click)="closeDrawer()"></div>
+    <div class="fixed inset-0 bg-black/50 z-50 md:hidden" (click)="closeDrawer()"></div>
   }
 
   <!-- Sidebar as drawer on mobile, fixed on desktop -->
   <app-sidebar
-    class="layout-sidebar"
-    [class.drawer-open]="!drawerOpen()"
+    class="md:relative md:translate-x-0 fixed left-0 top-0 h-full z-100 -translate-x-full transition-transform duration-300"
+    [class.translate-x-0]="!drawerOpen()"
     (closeSidebar)="closeDrawer()">
   </app-sidebar>
 
-  <main class="layout-main">
+  <main class="flex-1 flex flex-col overflow-hidden">
     <!-- Mobile header (only shown on mobile) -->
-    <header class="mobile-header md:hidden">
-      <button class="hamburger-btn" (click)="toggleDrawer()" aria-label="Menu">
+    <header class="flex items-center justify-between p-3 bg-white border-b border-[#e1e2ed] md:hidden">
+      <button class="flex items-center justify-center w-10 h-10 border-none bg-transparent rounded-lg cursor-pointer text-[#1c1b1f] hover:bg-[#e8e8e8]" (click)="toggleDrawer()" aria-label="Menu">
         <span class="material-symbols-outlined">{{ drawerOpen() ? 'menu' : 'close' }}</span>
       </button>
 
-      <div class="mobile-logo">
-        <div class="logo-icon">
-          <span class="material-symbols-outlined text-primary-container !text-3xl">task_alt</span>
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-[#2563eb]/10 rounded-md flex items-center justify-center">
+          <span class="material-symbols-outlined text-[#2563eb] !text-3xl">task_alt</span>
         </div>
-        <span class="font-display-md text-display-sm text-on-background">TaskFlow</span>
+        <span class="font-bold text-xl text-[#1c1b1f]">TaskFlow</span>
       </div>
 
-      <div class="mobile-spacer"></div>
+      <div class="w-10"></div>
     </header>
 
-    <div class="content">
+    <div class="flex-1 overflow-y-auto p-6 md:p-8">
       <router-outlet></router-outlet>
     </div>
   </main>

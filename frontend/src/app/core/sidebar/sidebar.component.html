@@ -1,54 +1,54 @@
-<aside class="sidebar">
+<aside class="flex flex-col h-full w-[280px] bg-white border-r border-[#e1e2ed] p-4 md:w-[280px] md:p-4">
   <!-- Mobile close button -->
-  <button class="sidebar-close md:hidden" (click)="closeSidebar.emit()" aria-label="Chiudi menu">
+  <button class="flex items-center justify-center w-10 h-10 border-none bg-transparent rounded-lg cursor-pointer text-[#434655] self-end mb-2 hover:bg-[#e8e8e8] md:hidden" (click)="closeSidebar.emit()" aria-label="Chiudi menu">
     <span class="material-symbols-outlined">close</span>
   </button>
 
   <!-- Logo Section -->
-  <div class="sidebar-logo">
-    <div class="logo-icon">
-      <span class="material-symbols-outlined text-primary-container !text-3xl">task_alt</span>
+  <div class="flex items-center gap-3 p-2 mb-6">
+    <div class="rounded-lg flex items-center justify-center shrink-0">
+      <span class="material-symbols-outlined text-[#2563eb] !text-3xl">task_alt</span>
     </div>
-    <span class="font-display-md text-display-md text-on-background">TaskFlow</span>
+    <span class="font-bold text-2xl text-[#191b1f]">TaskFlow</span>
   </div>
 
   <!-- User Section -->
   @if (user(); as user) {
-    <div class="sidebar-user">
-      <div class="user-avatar">
+    <div class="flex items-center gap-3 p-2 rounded-lg bg-[#f3f3fe] mb-4">
+      <div class="shrink-0">
         <span class="material-symbols-outlined !text-3xl">account_circle</span>
       </div>
-      <div class="user-info">
-        <span class="user-name">{{ user.name }}</span>
-        <span class="user-email">{{ user.email }}</span>
+      <div class="flex-col overflow-hidden flex">
+        <span class="font-semibold text-sm text-[#1c1b1f] whitespace-nowrap overflow-hidden text-ellipsis">{{ user.name }}</span>
+        <span class="text-xs text-[#757575] whitespace-nowrap overflow-hidden text-ellipsis">{{ user.email }}</span>
       </div>
     </div>
   }
 
-  <!-- Navigation Links - Future Desktop only -->
-  <nav class="sidebar-nav flex flex-col">
+  <!-- Navigation Links -->
+  <nav class="flex flex-col gap-1">
     <a
       routerLink="/tasks"
       routerLinkActive="active"
-      class="nav-link">
-      <span class="material-symbols-outlined">task</span>
-      <span>Tasks</span>
+      class="flex items-center gap-3 px-4 py-3 rounded-lg no-underline text-[#757575] font-medium transition-colors duration-200 hover:bg-[#e7e7f3] hover:text-[#1c1b1f]">
+      <span class="material-symbols-outlined text-xl">task</span>
+      <span>Attività</span>
     </a>
     <a
       routerLink="/categories"
       routerLinkActive="active"
-      class="nav-link">
-      <span class="material-symbols-outlined">category</span>
-      <span>Categories</span>
+      class="flex items-center gap-3 px-4 py-3 rounded-lg no-underline text-[#757575] font-medium transition-colors duration-200 hover:bg-[#e7e7f3] hover:text-[#1c1b1f]">
+      <span class="material-symbols-outlined text-xl">category</span>
+      <span>Categorie</span>
     </a>
   </nav>
 
   <!-- Spacer -->
-  <div class="sidebar-spacer"></div>
+  <div class="flex-1"></div>
 
   <!-- Logout Section -->
-  <button class="sidebar-logout" (click)="logout()">
-    <span class="material-symbols-outlined">logout</span>
+  <button class="flex items-center justify-center gap-3 w-full px-4 py-3 border-none rounded-lg bg-transparent text-[#757575] font-medium cursor-pointer transition-colors duration-200 md:px-3 md:mt-0 hover:bg-[#ffdad6] hover:text-[#ba1a1a]" (click)="logout()">
+    <span class="material-symbols-outlined text-xl">logout</span>
     <span>Logout</span>
   </button>
 </aside>

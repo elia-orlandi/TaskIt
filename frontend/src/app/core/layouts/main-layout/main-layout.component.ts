@@ -6,8 +6,7 @@ import { SidebarComponent } from '../../sidebar/sidebar.component';
   selector: 'app-main-layout',
   standalone: true,
   imports: [RouterOutlet, SidebarComponent],
-  templateUrl: './main-layout.component.html',
-  styleUrl: './main-layout.component.scss'
+  templateUrl: './main-layout.component.html'
 })
 export class MainLayoutComponent {
   drawerOpen = signal(true);

@@ -1,17 +1,15 @@
 import { Component, inject, output } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
-  templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.scss'
+  templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent {
   private authService = inject(AuthService);
-  private router = inject(Router);
 
   closeSidebar = output<void>();
 
