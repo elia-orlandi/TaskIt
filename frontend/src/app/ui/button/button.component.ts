@@ -14,4 +14,5 @@ export class ButtonComponent {
   loading = input(false);
   text = input('');
   variant = input<'primary' | 'secondary'>('primary');
+  class = input('');
 }

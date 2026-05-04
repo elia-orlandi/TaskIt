@@ -1,5 +1,5 @@
 <button
-    [class]="'btn-' + variant()"
+    [class]="'btn-' + variant() + (class() ? ' ' + class() : '')"
     [disabled]="disabled()"
     [type]="type()">
     @if (loading()) {
