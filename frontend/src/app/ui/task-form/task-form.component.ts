@@ -135,6 +135,8 @@ export class TaskFormComponent implements OnInit {
           priority: task.priority,
           due_date: task.due_date ? this.formatDateForInput(task.due_date) : ''
         });
+      } else {
+        this.form.reset({ priority: 'medium' });
       }
     });
   }

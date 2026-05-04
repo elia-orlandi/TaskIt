@@ -106,7 +106,7 @@ import { Category } from '../../core/models/task.models';
 
         <div class="flex justify-end gap-sm mt-lg">
           <ui-button text="Annulla" variant="secondary" (click)="closeModal()" />
-          <ui-button text="Salva" variant="primary" (click)="saveCategory()" [loading]="saving()" />
+          <ui-button class="m-0"text="Salva" variant="primary" (click)="saveCategory()" [loading]="saving()" />
         </div>
       </ui-modal>
 
@@ -124,7 +124,7 @@ import { Category } from '../../core/models/task.models';
 
         <div class="flex justify-end gap-sm mt-lg">
           <ui-button text="Annulla" variant="secondary" (click)="cancelDelete()" />
-          <ui-button text="Elimina" variant="primary" (click)="executeDelete()" [loading]="deleting()" />
+          <ui-button class="m-0" text="Elimina" variant="primary" (click)="executeDelete()" [loading]="deleting()" />
         </div>
       </ui-modal>
     </div>

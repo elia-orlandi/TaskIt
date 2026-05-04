@@ -236,7 +236,7 @@ import { Task, Category, TasksFilters, TasksResponse, Priority } from '../../cor
         </p>
         <div class="flex justify-end gap-sm">
           <ui-button text="Annulla" variant="secondary" (click)="cancelDelete()" />
-          <ui-button text="Elimina" variant="primary" (click)="executeDelete()" [loading]="deleting()" />
+          <ui-button class="m-0" text="Elimina" variant="primary" (click)="executeDelete()" [loading]="deleting()" />
         </div>
       </ui-modal>
     </div>
