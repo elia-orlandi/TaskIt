@@ -13,10 +13,53 @@ class TaskController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        $tasks = $request->user()->tasks()
-            ->with(['category', 'parentTask'])
-            ->orderBy('order_position')
-            ->get();
+        $query = $request->user()->tasks()->with(['category', 'parentTask']);
+
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->input('category_id'));
+        }
+
+        if ($request->filled('priority')) {
+            $query->where('priority', $request->input('priority'));
+        }
+
+        if ($request->has('completed')) {
+            $completed = $request->input('completed');
+            if (in_array($completed, ['true', '1', 1], true)) {
+                $query->whereNotNull('completed_at');
+            } else {
+                $query->whereNull('completed_at');
+            }
+        }
+
+        if ($request->filled('due_date_from')) {
+            $query->whereDate('due_date', '>=', $request->input('due_date_from'));
+        }
+
+        if ($request->filled('due_date_to')) {
+            $query->whereDate('due_date', '<=', $request->input('due_date_to'));
+        }
+
+        if ($request->filled('parent_task_id')) {
+            $query->where('parent_task_id', $request->input('parent_task_id'));
+        }
+
+        if ($request->filled('sort_by')) {
+            $sortDir = $request->input('sort_dir', 'asc');
+            $query->orderBy($request->input('sort_by'), $sortDir);
+        } else {
+            $query->orderBy('order_position');
+        }
+
+        $tasks = $query->get();
 
         return response()->json(['data' => $tasks]);
     }

@@ -13,7 +13,16 @@ class CategoryController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        $categories = $request->user()->categories()->orderBy('sort_order')->get();
+        $query = $request->user()->categories();
+
+        if ($request->filled('search')) {
+            $query->where('name', 'like', "%{$request->input('search')}%");
+        }
+
+        $sortDir = $request->input('sort_dir', 'asc');
+        $query->orderBy($request->input('sort_by', 'sort_order'), $sortDir);
+
+        $categories = $query->get();
 
         return response()->json([
             'data' => $categories,
