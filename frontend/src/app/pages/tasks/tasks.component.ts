@@ -29,7 +29,7 @@ import { Task, Category, TasksFilters, TasksResponse, Priority } from '../../cor
       </div>
 
       <!-- Filters -->
-      <div class="bg-surface-container-low rounded-xl p-md mb-md">
+      <div class="rounded-xl p-md mb-md">
         <div class="flex flex-wrap gap-md items-end">
           <!-- Search by name -->
           <div class="flex-1 min-w-[200px]">
@@ -39,7 +39,7 @@ import { Task, Category, TasksFilters, TasksResponse, Priority } from '../../cor
               [(ngModel)]="searchText"
               (ngModelChange)="onSearchChange()"
               placeholder="Cerca per nome..."
-              class="w-full px-md py-sm rounded-lg border border-surface-variant bg-surface-container-low focus:bg-surface-container-lowest focus:border-primary outline-none transition-colors font-body-md text-body-md text-on-surface" />
+              class="w-full px-md py-sm rounded-lg border border-surface-variant focus:bg-surface-container-lowest focus:border-primary outline-none transition-colors font-body-md text-body-md text-on-surface" />
           </div>
 
           <!-- State Multi-Select -->
@@ -75,10 +75,10 @@ import { Task, Category, TasksFilters, TasksResponse, Priority } from '../../cor
       </div>
 
       <!-- Table -->
-      <div class="flex-1 bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="overflow-x-auto">
+      <div class="flex-1 rounded-xl overflow-hidden flex flex-col min-h-0">
+        <div class="overflow-auto flex-1 min-h-0 touch-pan-y" style="-webkit-overflow-scrolling: touch; overscroll-behavior-y: contain;">
           <table class="w-full">
-            <thead class="bg-surface-container-high">
+            <thead class="bg-surface-container-high sticky top-0 z-10 shadow-sm">
               <tr>
                 <th class="px-md py-sm text-left font-label-sm text-label-sm text-on-surface-variant w-12">
                   <input type="checkbox" class="w-4 h-4 rounded border-outline accent-primary" />
@@ -220,7 +220,7 @@ import { Task, Category, TasksFilters, TasksResponse, Priority } from '../../cor
         [isOpen]="showModal()"
         [title]="isEditing() ? 'Modifica attività' : 'Nuova attività'"
         (onClose)="closeModal()">
-        <app-task-form [editingTask]="editingTask()" (cancel)="closeModal()" />
+        <app-task-form [editingTask]="editingTask()" (cancel)="onTaskFormCancel()" />
       </ui-modal>
 
       <!-- Delete Confirmation Modal -->
@@ -430,6 +430,11 @@ export class TasksComponent implements OnInit {
   closeModal(): void {
     this.showModal.set(false);
     this.editingTask.set(null);
+  }
+
+  onTaskFormCancel(): void {
+    this.closeModal();
+    this.loadTasks();
   }
 
   confirmDelete(task: Task): void {

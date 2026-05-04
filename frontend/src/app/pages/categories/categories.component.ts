@@ -26,7 +26,7 @@ import { Category } from '../../core/models/task.models';
       </div>
 
       <!-- Categories List -->
-      <div class="flex-1 bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="flex-1 rounded-xl overflow-hidden flex flex-col min-h-0">
         @if (loading()) {
           <div class="flex items-center justify-center h-full">
             <span class="material-symbols-outlined animate-spin text-primary">progress_activity</span>
@@ -37,7 +37,7 @@ import { Category } from '../../core/models/task.models';
             <p class="font-body-md text-body-md text-on-surface-variant">Nessuna categoria trovata</p>
           </div>
         } @else {
-          <div class="overflow-y-auto h-full">
+          <div class="overflow-y-auto flex-1 min-h-0">
             @for (category of categories(); track category.id) {
               <div class="flex items-center justify-between px-md py-md border-t border-surface-variant hover:bg-surface-container-lowest transition-colors">
                 <!-- Left: Color dot + Name + Task count -->
@@ -79,7 +79,7 @@ import { Category } from '../../core/models/task.models';
               type="text"
               [(ngModel)]="categoryName"
               placeholder="Inserisci il nome della categoria"
-              class="w-full px-md py-sm rounded-lg border border-surface-variant bg-surface-container-low focus:bg-surface-container-lowest focus:border-primary outline-none transition-colors font-body-md text-body-md text-on-surface"
+              class="w-full px-md py-sm rounded-lg border border-surface-variant focus:bg-surface-container-lowest focus:border-primary outline-none transition-colors font-body-md text-body-md text-on-surface"
               [class.border-error]="formError()" />
             @if (formError()) {
               <span class="font-label-sm text-label-sm text-error mt-xs block">{{ formError() }}</span>

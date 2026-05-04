@@ -1,4 +1,4 @@
-<div class="flex h-screen overflow-hidden">
+<div class="flex h-[100dvh] overflow-hidden overscroll-none">
   <!-- Mobile overlay when drawer open -->
   @if (!drawerOpen()) {
     <div class="fixed inset-0 bg-black/50 z-50 md:hidden" (click)="closeDrawer()"></div>
@@ -11,7 +11,7 @@
     (closeSidebar)="closeDrawer()">
   </app-sidebar>
 
-  <main class="flex-1 flex flex-col overflow-hidden">
+  <main class="flex-1 flex flex-col overflow-hidden min-h-0 overscroll-none">
     <!-- Mobile header (only shown on mobile) -->
     <header class="flex items-center justify-between p-3 bg-white border-b border-[#e1e2ed] md:hidden">
       <button class="flex items-center justify-center w-10 h-10 border-none bg-transparent rounded-lg cursor-pointer text-[#1c1b1f] hover:bg-[#e8e8e8]" (click)="toggleDrawer()" aria-label="Menu">
@@ -28,7 +28,7 @@
       <div class="w-10"></div>
     </header>
 
-    <div class="flex-1 overflow-y-auto p-6 md:p-8">
+    <div class="flex-1 overflow-y-auto p-6 md:p-8 min-h-0 overscroll-none">
       <router-outlet></router-outlet>
     </div>
   </main>

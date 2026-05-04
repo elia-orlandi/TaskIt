@@ -19,7 +19,7 @@ import { Task } from '../../core/models/task.models';
           id="title"
           formControlName="title"
           placeholder="Inserisci il titolo dell'attività"
-          class="w-full px-md py-sm rounded-lg border border-surface-variant bg-surface-container-low focus:bg-surface-container-lowest focus:border-primary outline-none transition-colors font-body-md text-body-md text-on-surface" />
+          class="w-full px-md py-sm rounded-lg border border-surface-variant focus:bg-surface-container-lowest focus:border-primary outline-none transition-colors font-body-md text-body-md text-on-surface" />
         @if (titleError()) {
           <span class="text-error font-label-sm text-label-sm">{{ titleError() }}</span>
         }
@@ -33,7 +33,7 @@ import { Task } from '../../core/models/task.models';
           formControlName="description"
           placeholder="Aggiungi una descrizione (opzionale)"
           rows="3"
-          class="w-full px-md py-sm rounded-lg border border-surface-variant bg-surface-container-low focus:bg-surface-container-lowest focus:border-primary outline-none transition-colors font-body-md text-body-md text-on-surface resize-none"></textarea>
+          class="w-full px-md py-sm rounded-lg border border-surface-variant focus:bg-surface-container-lowest focus:border-primary outline-none transition-colors font-body-md text-body-md text-on-surface resize-none"></textarea>
       </div>
 
       <!-- Category -->
@@ -42,7 +42,7 @@ import { Task } from '../../core/models/task.models';
         <select
           id="category"
           formControlName="category_id"
-          class="w-full px-md py-sm rounded-lg border border-surface-variant bg-surface-container-low focus:bg-surface-container-lowest focus:border-primary outline-none transition-colors font-body-md text-body-md text-on-surface">
+          class="w-full px-md py-sm rounded-lg border border-surface-variant focus:bg-surface-container-lowest focus:border-primary outline-none transition-colors font-body-md text-body-md text-on-surface">
           <option value="">Nessuna categoria</option>
           @for (cat of categories(); track cat.id) {
             <option [value]="cat.id">{{ cat.name }}</option>
@@ -56,7 +56,7 @@ import { Task } from '../../core/models/task.models';
         <select
           id="priority"
           formControlName="priority"
-          class="w-full px-md py-sm rounded-lg border border-surface-variant bg-surface-container-low focus:bg-surface-container-lowest focus:border-primary outline-none transition-colors font-body-md text-body-md text-on-surface">
+          class="w-full px-md py-sm rounded-lg border border-surface-variant focus:bg-surface-container-lowest focus:border-primary outline-none transition-colors font-body-md text-body-md text-on-surface">
           <option value="low">Bassa</option>
           <option value="medium">Media</option>
           <option value="high">Alta</option>
@@ -70,7 +70,7 @@ import { Task } from '../../core/models/task.models';
           type="date"
           id="due_date"
           formControlName="due_date"
-          class="w-full px-md py-sm rounded-lg border border-surface-variant bg-surface-container-low focus:bg-surface-container-lowest focus:border-primary outline-none transition-colors font-body-md text-body-md text-on-surface" />
+          class="w-full px-md py-sm rounded-lg border border-surface-variant focus:bg-surface-container-lowest focus:border-primary outline-none transition-colors font-body-md text-body-md text-on-surface" />
       </div>
 
       <!-- Actions -->
