@@ -36,7 +36,6 @@ export class AuthService {
   register(data: RegisterRequest): Observable<AuthResponse> {
     this._loading.set(true);
     return this.http.post<AuthResponse>(`${API_URL}/register`, data).pipe(
-      tap(response => this.storeSession(response)),
       tap(() => this._loading.set(false)),
       catchError((error) => {
         this._loading.set(false);

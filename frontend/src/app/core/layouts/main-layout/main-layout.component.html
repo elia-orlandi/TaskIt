@@ -1,0 +1,35 @@
+<div class="layout">
+  <!-- Mobile overlay when drawer open -->
+  @if (!drawerOpen()) {
+    <div class="drawer-overlay md:hidden" (click)="closeDrawer()"></div>
+  }
+
+  <!-- Sidebar as drawer on mobile, fixed on desktop -->
+  <app-sidebar
+    class="layout-sidebar"
+    [class.drawer-open]="!drawerOpen()"
+    (closeSidebar)="closeDrawer()">
+  </app-sidebar>
+
+  <main class="layout-main">
+    <!-- Mobile header (only shown on mobile) -->
+    <header class="mobile-header md:hidden">
+      <button class="hamburger-btn" (click)="toggleDrawer()" aria-label="Menu">
+        <span class="material-symbols-outlined">{{ drawerOpen() ? 'menu' : 'close' }}</span>
+      </button>
+
+      <div class="mobile-logo">
+        <div class="logo-icon">
+          <span class="material-symbols-outlined text-primary-container !text-3xl">task_alt</span>
+        </div>
+        <span class="font-display-md text-display-sm text-on-background">TaskFlow</span>
+      </div>
+
+      <div class="mobile-spacer"></div>
+    </header>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

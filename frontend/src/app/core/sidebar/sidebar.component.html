@@ -1,0 +1,54 @@
+<aside class="sidebar">
+  <!-- Mobile close button -->
+  <button class="sidebar-close md:hidden" (click)="closeSidebar.emit()" aria-label="Chiudi menu">
+    <span class="material-symbols-outlined">close</span>
+  </button>
+
+  <!-- Logo Section -->
+  <div class="sidebar-logo">
+    <div class="logo-icon">
+      <span class="material-symbols-outlined text-primary-container !text-3xl">task_alt</span>
+    </div>
+    <span class="font-display-md text-display-md text-on-background">TaskFlow</span>
+  </div>
+
+  <!-- User Section -->
+  @if (user(); as user) {
+    <div class="sidebar-user">
+      <div class="user-avatar">
+        <span class="material-symbols-outlined !text-3xl">account_circle</span>
+      </div>
+      <div class="user-info">
+        <span class="user-name">{{ user.name }}</span>
+        <span class="user-email">{{ user.email }}</span>
+      </div>
+    </div>
+  }
+
+  <!-- Navigation Links - Future Desktop only -->
+  <nav class="sidebar-nav flex flex-col">
+    <a
+      routerLink="/tasks"
+      routerLinkActive="active"
+      class="nav-link">
+      <span class="material-symbols-outlined">task</span>
+      <span>Tasks</span>
+    </a>
+    <a
+      routerLink="/categories"
+      routerLinkActive="active"
+      class="nav-link">
+      <span class="material-symbols-outlined">category</span>
+      <span>Categories</span>
+    </a>
+  </nav>
+
+  <!-- Spacer -->
+  <div class="sidebar-spacer"></div>
+
+  <!-- Logout Section -->
+  <button class="sidebar-logout" (click)="logout()">
+    <span class="material-symbols-outlined">logout</span>
+    <span>Logout</span>
+  </button>
+</aside>

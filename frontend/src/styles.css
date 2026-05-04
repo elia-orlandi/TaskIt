@@ -77,6 +77,16 @@
   --text-display-lg--letter-spacing: -0.02em;
   --text-display-lg--font-weight: 700;
 
+  --text-display-md: 24px;
+  --text-display-md--line-height: 32px;
+  --text-display-md--letter-spacing: -0.02em;
+  --text-display-md--font-weight: 700;
+
+  --text-display-sm: 20px;
+  --text-display-sm--line-height: 28px;
+  --text-display-sm--letter-spacing: -0.02em;
+  --text-display-sm--font-weight: 700;
+
   --text-title-sm: 18px;
   --text-title-sm--line-height: 24px;
   --text-title-sm--font-weight: 600;

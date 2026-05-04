@@ -37,6 +37,7 @@ export class RegisterComponent {
 
   loading = this.authService.loading;
   error = signal<string | null>(null);
+  success = signal<string | null>(null);
 
   private formValue = toSignal(this.form.valueChanges, { initialValue: this.form.value });
   private confirmControl = this.form.get('password_confirmation')!;
@@ -110,7 +111,20 @@ export class RegisterComponent {
       password: password!,
       password_confirmation: password_confirmation!
     }).subscribe({
-      next: () => this.router.navigate(['/dashboard']),
+      next: (response) => {
+        this.success.set(response.message);
+        this.form.reset();
+        let seconds = 3;
+        const interval = setInterval(() => {
+          seconds--;
+          const el = document.getElementById('countdown');
+          if (el) el.textContent = String(seconds);
+          if (seconds <= 0) {
+            clearInterval(interval);
+            this.router.navigate(['/login']);
+          }
+        }, 1000);
+      },
       error: (err: HttpErrorResponse) => {
         const message = err.error?.message || 'Registrazione fallita';
         this.error.set(message);

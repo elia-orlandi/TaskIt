@@ -3,9 +3,8 @@
         <div
             class="bg-surface-container-lowest border border-surface-variant rounded-xl p-xl flex flex-col gap-xl shadow-sm">
             <div class="flex flex-col items-center text-center gap-sm">
-                <div class="h-12 w-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-sm">
-                    <span class="material-symbols-outlined text-primary-container"
-                        style="font-size: 28px;">task_alt</span>
+                <div class="h-12 w-12 rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary-container !text-5xl">task_alt</span>
                 </div>
                 <h1 class="font-display-lg text-display-lg text-on-background">TaskFlow</h1>
                 <p class="font-body-md text-body-md text-on-surface-variant">Crea il tuo account</p>
@@ -15,6 +14,7 @@
                     <p class="text-error font-label-sm text-label-sm">{{ error() }}</p>
                 </div>
             }
+            @if (!success()) {
             <form class="flex flex-col gap-sm" [formGroup]="form" (ngSubmit)="submit()">
                 <div class="flex flex-col gap-xs">
                     <label class="font-label-sm text-label-sm text-on-surface-variant" for="name">Nome</label>
@@ -52,6 +52,15 @@
                     variant="primary"
                     type="submit" />
             </form>
+            } @else {
+                <div class="border border-primary-container/30 rounded-lg px-md py-md flex flex-col gap-sm">
+                    <p class="text-primary-container font-label-sm text-label-sm">{{ success() }}</p>
+                    <p class="text-on-surface-variant font-body-sm text-body-sm">
+                        Verrai reindirizzato automaticamente tra <span id="countdown">3</span> secondi...
+                    </p>
+                    <a routerLink="/login" class="font-semibold text-primary-container hover:text-primary cursor-pointer">Vai al login →</a>
+                </div>
+            }
             <div class="flex flex-col gap-md items-center mt-sm">
                 <div class="w-full h-px bg-surface-variant relative flex items-center justify-center">
                     <span

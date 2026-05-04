@@ -21,7 +21,7 @@ class AuthenticatedSessionController extends Controller
 
         if (! $user || ! Hash::check($credentials['password'], $user->password)) {
             throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
+                'email' => [__('passwords.credentials')],
             ]);
         }
 
@@ -29,7 +29,7 @@ class AuthenticatedSessionController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
-            'message' => 'Login successful',
+            'message' => __('auth.login_successful'),
             'user' => $user,
             'token' => $token,
         ]);
@@ -40,7 +40,7 @@ class AuthenticatedSessionController extends Controller
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([
-            'message' => 'Logged out successfully',
+            'message' => __('auth.logged_out'),
         ]);
     }
 }
