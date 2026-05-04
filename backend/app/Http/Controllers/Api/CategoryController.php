@@ -22,7 +22,7 @@ class CategoryController extends Controller
         $sortDir = $request->input('sort_dir', 'asc');
         $query->orderBy($request->input('sort_by', 'sort_order'), $sortDir);
 
-        $categories = $query->get();
+        $categories = $query->withCount('tasks')->get();
 
         return response()->json([
             'data' => $categories,

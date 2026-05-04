@@ -59,9 +59,10 @@ class TaskController extends Controller
             $query->orderBy('order_position');
         }
 
-        $tasks = $query->get();
+        $perPage = $request->input('per_page', 15);
+        $tasks = $query->paginate($perPage);
 
-        return response()->json(['data' => $tasks]);
+        return response()->json($tasks);
     }
 
     public function store(StoreTaskRequest $request): JsonResponse
@@ -103,6 +104,6 @@ class TaskController extends Controller
         $task->completed_at = $task->completed_at ? null : now();
         $task->save();
 
-        return response()->json(['data' => $task->fresh()]);
+        return response()->json(['data' => $task->fresh(['category'])]);
     }
 }
